@@ -10,7 +10,7 @@ const News = () => {
   const [displayedArticles, setDisplayedArticles] = useState([]);
   const itemsPerPage = 25;
 
-  // Use a more reliable query term (avoid "tesla" which might be too restrictive)
+  
   const apiKey = import.meta.env.VITE_API_KEY;
   const url = `https://newsapi.org/v2/top-headlines?category=technology&language=en&apiKey=${apiKey}`;
 
@@ -24,15 +24,12 @@ const News = () => {
         }
 
         const data = await response.json();
-        console.log("API Response:", data); // Debugging
 
         if (data.status === "ok" && data.articles) {
           // Less restrictive filtering - only require title and url
           const filteredArticles = data.articles.filter(
             (article) => article.title && article.url
           );
-
-          console.log("Filtered Articles:", filteredArticles); // Debugging
 
           setArticles(filteredArticles);
           setDisplayedArticles(filteredArticles.slice(0, itemsPerPage));
