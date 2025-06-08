@@ -12,7 +12,7 @@ const News = () => {
 
   // Use a more reliable query term (avoid "tesla" which might be too restrictive)
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+  const url = `https://newsapi.org/v2/top-headlines?category=technology&language=en&apiKey=${apiKey}`;
 
   useEffect(() => {
     const fetchNews = async () => {
